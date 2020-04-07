@@ -68,12 +68,41 @@ print('Render kwargs:')
 pprint.pprint(render_kwargs_test)
 
 
-down = 4
+down = 4    # trade off resolution+aliasing for render speed
 render_kwargs_fast = {k : render_kwargs_test[k] for k in render_kwargs_test}
 render_kwargs_fast['N_importance'] = 0
 
 c2w = np.eye(4)[:3,:4].astype(np.float32) # identity pose matrix
-test = run_nerf.render(H//down, W//down, focal/down, c2w=c2w, **render_kwargs_fast)
-img = np.clip(test[0],0,1)
-plt.imshow(img)
-plt.show()
+
+#Start computing picture
+#test = run_nerf.render(H//down, W//down, focal/down, c2w=c2w, **render_kwargs_fast)
+#img = np.clip(test[0],0,1)
+#print("Close picture to start render videofile")
+#plt.imshow(img)
+#plt.show()
+
+#------------------------------------------------------------
+print("Rendering video")
+down = 8 # trade off resolution+aliasing for render speed to make this video faster
+
+
+#get just several first frames
+max_frames = 10
+skip_frames = 3
+limit_frames = max_frames*skip_frames
+
+frames = []
+
+for i, c2w in enumerate(render_poses):
+    if i >= limit_frames:
+        break    # break here
+    if i % skip_frames != 0:
+        continue
+    print("frame ", i+1,"/",render_poses.size, " limit: ", limit_frames+1)
+    test = run_nerf.render(H//down, W//down, focal/down, c2w=c2w[:3,:4], **render_kwargs_fast)
+    frames.append((255*np.clip(test[0],0,1)).astype(np.uint8))
+    
+f = '_video.mp4'
+print('done, saving ', f)
+#imageio.mimwrite(f, frames, fps=30, quality=8)
+imageio.mimwrite(f, frames, fps=30 / skip_frames, quality=9)

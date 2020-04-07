@@ -24,7 +24,8 @@ Python 3 dependencies:
 * matplotlib
 * numpy
 * imageio
-*  configargparse
+* imageio-ffmpeg
+* configargparse
 
 The LLFF data loader requires ImageMagick.
 
@@ -90,6 +91,7 @@ Or, simply run
 ```
 python3 render_demo.py
 ```
+And after image will be shown - close it to start creating video, written to _video.mp4 file.
 
 
 ### Extracting geometry from a NeRF
