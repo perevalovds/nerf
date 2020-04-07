@@ -20,7 +20,7 @@ Tensorflow implementation of optimizing a neural representation for a single sce
 
 Python 3 dependencies:
 
-* Tensorflow 1.15
+* Tensorflow 1.15  (pip3 install tensorflow==1.15)
 * matplotlib
 * numpy
 * imageio
