@@ -73,11 +73,15 @@ bash download_example_weights.sh
 ```
 to get a pretrained high-res NeRF for the Fern dataset. Now you can use [`render_demo.ipynb`](https://github.com/bmild/nerf/blob/master/render_demo.ipynb) to render new views.
 
-You need to have installed ![Jupyter](https://jupyter.readthedocs.io/en/latest/install.html) to run this:
+You need to have installed ![Jupyter](https://jupyter.readthedocs.io/en/latest/install.html) 
 ```
 pip3 install --upgrade pip
 pip3 install jupyter
+```
 
+to run this:
+
+```
 jupyter notebook
 ```
 
