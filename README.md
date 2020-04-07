@@ -85,6 +85,11 @@ to run this:
 jupyter notebook
 ```
 
+Or, simply run 
+
+```
+python3 render_demo.py
+```
 
 
 ### Extracting geometry from a NeRF
