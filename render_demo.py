@@ -75,11 +75,11 @@ render_kwargs_fast['N_importance'] = 0
 c2w = np.eye(4)[:3,:4].astype(np.float32) # identity pose matrix
 
 #Start computing picture
-#test = run_nerf.render(H//down, W//down, focal/down, c2w=c2w, **render_kwargs_fast)
-#img = np.clip(test[0],0,1)
-#print("Close picture to start render videofile")
-#plt.imshow(img)
-#plt.show()
+test = run_nerf.render(H//down, W//down, focal/down, c2w=c2w, **render_kwargs_fast)
+img = np.clip(test[0],0,1)
+print("Close picture to start render videofile")
+plt.imshow(img)
+plt.show()
 
 #------------------------------------------------------------
 print("Rendering video")
